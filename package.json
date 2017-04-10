@@ -1,0 +1,34 @@
+{
+  "name": "react-syntax-highlight.js",
+  "version": "0.0.1",
+  "description": "React component for syntax highlighting using Highlight.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bombadillo/react-syntax-highlight.js.git"
+  },
+  "author": "bombadillo",
+  "keywords": [
+    "react",
+    "reactjs",
+    "syntax",
+    "highlight",
+    "highlight.js",
+    "highlighting"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bombadillo/react-syntax-highlight.js/issues"
+  },
+  "homepage": "https://github.com/bombadillo/react-syntax-highlight.js",
+  "dependencies": {
+    "highlight.js": "^9.10.0"
+  },
+  "peerDependencies": {
+    "react": "15.x",
+    "react-dom": "15.x"
+  }
+}
