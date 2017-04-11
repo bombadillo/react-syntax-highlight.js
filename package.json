@@ -2,9 +2,11 @@
   "name": "react-syntax-highlight.js",
   "version": "1.0.0",
   "description": "React component for syntax highlighting using Highlight.js",
-  "main": "index.js",
+  "main": "./distribution/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel source --out-dir distribution",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -26,10 +28,16 @@
   },
   "homepage": "https://github.com/bombadillo/react-syntax-highlight.js",
   "dependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",    
     "highlight.js": "^9.10.0"
   },
   "peerDependencies": {
     "react": "15.x",
     "react-dom": "15.x"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1"
   }
 }
