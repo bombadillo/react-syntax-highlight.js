@@ -1,6 +1,6 @@
 {
   "name": "react-syntax-highlight.js",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "React component for syntax highlighting using Highlight.js",
   "main": "./distribution/index.js",
   "scripts": {
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/bombadillo/react-syntax-highlight.js",
   "dependencies": {
-    "babel-plugin-transform-class-properties": "^6.24.1",    
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "highlight.js": "^9.10.0"
   },
   "peerDependencies": {
