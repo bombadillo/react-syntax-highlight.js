@@ -1,72 +1,57 @@
-(function (factory) {
-  if (typeof require === 'function' &&
-      typeof module  === 'object' &&
-      typeof exports === 'object' &&
-      module.exports === exports) {
+import React from 'react';
+import ReactDOM from 'react-dom';
+import hljs from 'highlight.js';
+import PropTypes from 'prop-types';
 
-    // Node: export as module
-    module.exports = factory(
-      require('react'),
-      require('react-dom'),
-      require('highlight.js'),
-      require('prop-types')
-    );
-  } else {
-    // Browser: export as global variable
-    window.HighLight = window.HighLight || factory(React, ReactDOM, hljs, propTypes);
+export default class HighLight extends React.Component {
+  static propTypes = {
+    lang: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired
   }
 
-})(function (React, ReactDOM, hljs, propTypes) {
-  return React.createClass({
-    propTypes: {
-      lang: propTypes.string.isRequired,
-      value: propTypes.string.isRequired
-    },
+  componentDidMount = () => {
+    // this will only be called once after first time render
+    this.updateCodeBlockDOM();
+  }
 
-    componentDidMount: function () {
-      // this will only be called once after first time render
-      this.updateCodeBlockDOM();
-    },
+  componentDidUpdate = () => {
+    // whenever component is updated
+    this.updateCodeBlockDOM();
+  }
 
-    componentDidUpdate: function () {
-      // whenever component is updated
-      this.updateCodeBlockDOM();
-    },
+  render () {
+    /*
+      * <pre inherit_all_the_props_from_parent >
+      *  <code ref='code' className={'hljs ' + this.props.lang}>
+      *    to_be_rendered_by_highlight.js
+      *  </code>
+      * </pre>
+      *
+      */
 
-    render: function () {
-      /*
-       * <pre inherit_all_the_props_from_parent >
-       *  <code ref='code' className={'hljs ' + this.props.lang}>
-       *    to_be_rendered_by_highlight.js
-       *  </code>
-       * </pre>
-       *
-       */
+    var props = Object.assign({}, this.props);
+    delete props.lang;
+    delete props.value;
 
-      var props = Object.assign({}, this.props);
-      delete props.lang;
-      delete props.value;
-
-      return (
-        React.createElement('pre', props,
+    return (
+       React.createElement('pre', props,
           React.createElement('code', {
             ref: 'code',
             className: 'hljs ' + this.props.lang
           })
         )
-      );
-    },
+    );
+  }
 
-    updateCodeBlockDOM: function () {
-      // update real DOM element after component render
-      var ele = ReactDOM.findDOMNode(this.refs.code);
+  updateCodeBlockDOM = () => {
+    // update real DOM element after component render
+    var ele = ReactDOM.findDOMNode(this.refs.code);
 
-      try {
-        ele.innerHTML = hljs.highlight(this.props.lang, this.props.value, true).value;
-      } catch (e) {
-        console.warn(e);
-        ele.innerHTML = this.props.value; // remove syntax highlight
-      }
+    try {
+      ele.innerHTML = hljs.highlight(this.props.lang, this.props.value, true).value;
+    } catch (e) {
+      console.warn(e);
+      ele.innerHTML = this.props.value; // remove syntax highlight
     }
-  });
-});
+  }
+}
