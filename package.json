@@ -15,7 +15,6 @@
   "author": "bombadillo",
   "keywords": [
     "react",
-    "prop-types",
     "reactjs",
     "syntax",
     "highlight",
@@ -33,7 +32,8 @@
   },
   "peerDependencies": {
     "react": "15.x",
-    "react-dom": "15.x"
+    "react-dom": "15.x",
+    "prop-types": "15.5.7"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
